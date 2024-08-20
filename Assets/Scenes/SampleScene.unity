@@ -168,9 +168,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec3e59df61cf5c74eb2e050a7e375f9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 8884777006428575708, guid: ac1034e397cb5a3478aabfb7b1d8126c, type: 3}
+  _prefab: {fileID: 4702520639551996457, guid: ac1034e397cb5a3478aabfb7b1d8126c, type: 3}
   _target: {fileID: 1698719571}
-  _force: 20
   _delay: 1
 --- !u!1 &680106357
 GameObject:

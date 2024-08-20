@@ -3,12 +3,11 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    [SerializeField] private GameObject _prefab;
+    [SerializeField] private Bullet _prefab;
     [SerializeField] private Transform _target;
-    [SerializeField] private float _force;
     [SerializeField] private float _delay;
 
-    private void Start()
+    private void Awake()
     {
         StartCoroutine(Counter());
     }
@@ -17,7 +16,7 @@ public class Spawner : MonoBehaviour
     {
         var direction = (_target.position - transform.position).normalized;
         var bullet = Instantiate(_prefab, transform.position + direction, Quaternion.identity);
-        bullet.GetComponent<Rigidbody>().velocity = direction * _force;
+        bullet.Accelerate(direction);
     }
 
     private IEnumerator Counter()
