@@ -9,24 +9,23 @@ public class Spawner : MonoBehaviour
 
     private void Awake()
     {
-        StartCoroutine(Counter());
+        StartCoroutine(DelaySpawn());
     }
 
     private void Spawn()
     {
         var direction = (_target.position - transform.position).normalized;
         var bullet = Instantiate(_prefab, transform.position + direction, Quaternion.identity);
-        bullet.Accelerate(direction);
+        bullet.Init(direction);
     }
 
-    private IEnumerator Counter()
+    private IEnumerator DelaySpawn()
     {
-        int numberSpawners = 5;
+        bool isWork = enabled;
 
-        while (numberSpawners > 0)
+        while (isWork)
         {
             Spawn();
-            numberSpawners--;
             yield return new WaitForSeconds(_delay);
         }
     }
