@@ -16,7 +16,6 @@ public class Shooting : MonoBehaviour
     {
         var direction = (_target.position - transform.position).normalized;
         var bullet = Instantiate(_prefab, transform.position + direction, Quaternion.identity);
-        bullet.GetComponent<Rigidbody>().transform.up = direction;
         bullet.Init(direction);
     }
 

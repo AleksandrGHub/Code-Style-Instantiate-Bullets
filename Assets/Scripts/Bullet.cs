@@ -14,6 +14,7 @@ public class Bullet : MonoBehaviour
 
     public void Init(Vector3 direction)
     {
+        transform.up = direction;
         _rigidbody.velocity = direction * _force;
     }
 }
