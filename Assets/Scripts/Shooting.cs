@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class Spawner : MonoBehaviour
+public class Shooting : MonoBehaviour
 {
     [SerializeField] private Bullet _prefab;
     [SerializeField] private Transform _target;
@@ -9,24 +9,26 @@ public class Spawner : MonoBehaviour
 
     private void Awake()
     {
-        StartCoroutine(DelaySpawn());
+        StartCoroutine(Shoot());
     }
 
     private void Spawn()
     {
         var direction = (_target.position - transform.position).normalized;
         var bullet = Instantiate(_prefab, transform.position + direction, Quaternion.identity);
+        bullet.GetComponent<Rigidbody>().transform.up = direction;
         bullet.Init(direction);
     }
 
-    private IEnumerator DelaySpawn()
+    private IEnumerator Shoot()
     {
         bool isWork = enabled;
+        var wait = new WaitForSeconds(_delay);
 
         while (isWork)
         {
             Spawn();
-            yield return new WaitForSeconds(_delay);
+            yield return wait;
         }
     }
 }
